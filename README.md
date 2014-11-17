@@ -1,4 +1,4 @@
 mTRAC
 =====
 
-Developing a collaborative learning environment of the future.
+Developing a collaborative learning environment for teachers and students to communicate remotely.
