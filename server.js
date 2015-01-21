@@ -3,7 +3,6 @@
 //require('newrelic');
 var express  = require('express');
 var app      = express();
-gi
 var port     = process.env.PORT || 2000;
 
 var mongoose = require('mongoose');
