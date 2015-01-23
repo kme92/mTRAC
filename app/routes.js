@@ -15,14 +15,24 @@ module.exports = function(app, passport) {
 		failureRedirect : '/', // redirect back to the login page if there is an error
 		failureFlash : true // allow flash messages
 	}));
-	
 
-	
 
-	// =====================================
-	// PROFILE ==============================
-	// =====================================
-	// show the profile page
+    // ===================================
+    // UI Views ==========================
+    // ===================================
+
+    app.get('/ui/:view', isLoggedIn, function(req, res) {
+
+        var viewString = 'uis/' + req.param('view') + '.ejs';
+
+        res.render(viewString, {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+
+	// ===================================
+	// Home ==============================
+	// ===================================
 	
 	app.get('/home', isLoggedIn, function(req, res) {
 		res.render('home.ejs', {
