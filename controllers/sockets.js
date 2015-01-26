@@ -4,13 +4,8 @@ module.exports = function (io) {
 
     io.sockets.on('connection', function (socket) {
 
-        socket.on('hello', function(){
-            console.log('yay');
-        });
-
-        //testing
         socket.on('chat message', function(msg){
-            //console.log('message: ' + msg);
+            console.log('message: ' + msg);
         });
 
         socket.on('message', function (source, msg) {
