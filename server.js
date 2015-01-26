@@ -4,7 +4,6 @@
 var express  = require('express');
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
 var port     = process.env.PORT || 2000; // heroku or local deployment
 
 var mongoose = require('mongoose');
@@ -21,7 +20,7 @@ var configDB = require('./config/database.js');
 
 // config
 mongoose.connect(configDB.url); 
-require('./config/passport')(passport); // pass passport for config
+require('./config/passport')(passport);
 
 // express
 app.use(express.static(__dirname + '/public'));
@@ -31,14 +30,17 @@ app.use(bodyParser());
 
 app.set('view engine', 'ejs');
 
-// required for passport
 app.use(session({ secret: 'DRDC4' }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(flash());
 
 // routes
-require('./app/routes.js')(app, passport); 
+require('./app/routes.js')(app, passport);
+
+// start sockets
+
+var io = require('./controllers/sockets').listen(app)
 
 // launch
 app.listen(port);
