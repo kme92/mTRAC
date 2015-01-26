@@ -2,8 +2,10 @@
 
 //require('newrelic');
 var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 2000;
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port     = process.env.PORT || 2000; // heroku or local deployment
 
 var mongoose = require('mongoose');
 var favicon  = require('serve-favicon');
