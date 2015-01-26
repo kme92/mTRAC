@@ -1,10 +1,31 @@
-var io = require('socket.io')();
+module.exports = function (io) {
 
-module.exports.listen = function(app){
-    io.on('connection', function (socket) {
-        socket.emit('news', { hello: 'world' });
-        socket.on('my other event', function (data) {
-            console.log(data);
+    'use strict';
+
+    io.sockets.on('connection', function (socket) {
+
+        socket.on('hello', function(){
+            console.log('yay');
+        });
+
+        //testing
+        socket.on('chat message', function(msg){
+            //console.log('message: ' + msg);
+        });
+
+        socket.on('message', function (source, msg) {
+
+            io.sockets.emit('broadcast', {
+                "msg": msg,
+                "source": source
+            });
+        });
+
+        socket.on('disconnect', function(){
+            //emit disconnect
         });
     });
-}
+
+
+
+};
