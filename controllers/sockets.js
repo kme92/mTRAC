@@ -4,15 +4,11 @@ module.exports = function (io) {
 
     io.sockets.on('connection', function (socket) {
 
-        socket.on('chat message', function(msg){
-            console.log('message: ' + msg);
-        });
+        socket.on('chat message', function (msgOb) {
 
-        socket.on('message', function (source, msg) {
-
-            io.sockets.emit('broadcast', {
-                "msg": msg,
-                "source": source
+            socket.broadcast.emit('chat message', {
+                msg: msgOb.msg,
+                color: msgOb.color
             });
         });
 

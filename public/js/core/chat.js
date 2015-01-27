@@ -10,9 +10,20 @@ $(document).ready(function(){
     }, 30000);
 
     $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+        var msg = $('#m').val();
+        var color = "green";
+        msgOb = {
+                msg: msg,
+                color: color
+        };
+        socket.emit('chat message', msgOb);
+        appendMessage(msgOb);
         $('#m').val('');
         return false;
+    });
+
+    socket.on('chat message', function(msgOb){
+        appendMessage(msgOb);
     });
 
 });
@@ -21,4 +32,8 @@ function pingServer(socket)
 {
     //console.log('pinging server at: ' + new Date());
     socket.emit('ping');
+}
+
+function appendMessage(msgOb) {
+    $('#messages').append($('<li style=\"color:'+ msgOb.color  + '\">').text(msgOb.msg));
 }

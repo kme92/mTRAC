@@ -2,8 +2,6 @@
 
 require('newrelic');
 
-
-
 var express = require('express');
 var app = require('express')();
 var server = require('http').Server(app);
@@ -34,7 +32,7 @@ app.use(bodyParser());
 
 app.set('view engine', 'ejs');
 
-app.use(session({ secret: 'DRDC4' }));
+app.use(session({ secret: 'C2L2' }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
@@ -45,7 +43,7 @@ require('./app/routes.js')(app, passport);
 // launch
 server.listen(port);
 
-// start sockets
+// start socket server
 require('./controllers/sockets')(io);
 
 
