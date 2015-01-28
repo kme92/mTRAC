@@ -1,19 +1,17 @@
 module.exports = function (io) {
-
     'use strict';
 
     io.sockets.on('connection', function (socket) {
 
+        var user = socket.request.user;
+
         socket.on('chat message', function (msgOb) {
-
-            socket.broadcast.emit('chat message', {
+console.log(msgOb);
+            socket.emit('chat message', {
                 msg: msgOb.msg,
-                color: msgOb.color
+                color: msgOb.color,
+                user: user.local.name
             });
-        });
-
-        socket.on('disconnect', function(){
-            //emit disconnect
         });
     });
 

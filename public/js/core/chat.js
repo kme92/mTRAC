@@ -1,31 +1,9 @@
 var socket = io.connect('/');
+var chatColor = '#FFFFFF';
 
 $(document).ready(function(){
-    pingServer(socket); //initial ping - heroku will close connection if no ping within 30s of connection
-
-    // ping server every 30s (heroku timeout is 55s)
-    setInterval(function ()
-    {
-        pingServer(socket);
-    }, 30000);
-
-    $('form').submit(function(){
-        var msg = $('#m').val();
-        var color = "green";
-        msgOb = {
-                msg: msg,
-                color: color
-        };
-        socket.emit('chat message', msgOb);
-        appendMessage(msgOb);
-        $('#m').val('');
-        return false;
-    });
-
-    socket.on('chat message', function(msgOb){
-        appendMessage(msgOb);
-    });
-
+    initPingTimer();
+    bindChatEvents(socket);
 });
 
 function pingServer(socket)
@@ -34,6 +12,40 @@ function pingServer(socket)
     socket.emit('ping');
 }
 
+function initPingTimer()
+{
+    pingServer(socket); //initial ping - heroku will close connection if no ping within 30s of connection
+
+    // ping server every 30s (heroku timeout is 55s)
+    setInterval(function ()
+    {
+        pingServer(socket);
+    }, 30000);
+}
+
+function bindChatEvents(socket)
+{
+    $('form').submit(function(){
+        var msg = $('#m').val();
+        var color = "green";
+        msgOb = {
+            msg: msg,
+            color: color
+        };
+        socket.emit('chat message', msgOb);
+        $('#m').val('');
+        return false;
+    });
+
+    //listen for events
+    socket.on('chat message', function(msgOb){
+        console.log(msgOb);
+        appendMessage(msgOb);
+    });
+}
+
 function appendMessage(msgOb) {
-    $('#messages').append($('<li style=\"color:'+ msgOb.color  + '\">').text(msgOb.msg));
+    $('#messages')
+        .append($('<li style=\"color:'+ msgOb.color  + '\">')
+        .text(msgOb.user + ": " + msgOb.msg));
 }
