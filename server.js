@@ -45,7 +45,7 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 app.use(flash());
 
 // routes
@@ -66,14 +66,12 @@ io.use(passportSocketIo.authorize({
 }));
 
 function onAuthorizeSuccess(data, accept){
-    console.log('successful connection to socket.io');
     accept(null, true);
 }
 
 function onAuthorizeFail(data, message, error, accept){
     if(error)
         throw new Error(message);
-    console.log('failed connection to socket.io:', message);
     accept(null, false);
 }
 require('./controllers/sockets')(io);

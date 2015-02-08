@@ -1,6 +1,6 @@
 <!-- views/index.ejs -->
 <!doctype html>
-<html ng-app="MTRACIndexApp">
+<html>
 <head>
 	<title>mTRAC</title>
 	<meta name="description" content="Developing a collaborative learning environment of the future.">
@@ -9,38 +9,59 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/index.css">
-	<script type="text/javascript" src="/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/angular.min.js"></script>
-	<script type="text/javascript" src="/js/angular-route.min.js"></script>
-	<script type="text/javascript" src="/js/angular-animate.min.js"></script>
-	<script type="text/javascript" src="/js/googleanalytics.js"></script>
-	<script type="text/javascript" src="/js/ng/index.js"></script>
+	<!--<script type="text/javascript" src="/js/jquery.min.js"></script>-->
 </head>
 <body>
-
-<div class="container auth">
-    <div id="big-form" class="well auth-box">
+<header class="header" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <p class="brand">mTRAC</p>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="container main-content-container">
+    <div class="main-content">
+<div class="container-fluid">
+    <div class="front-welcome">
+        <div class="row">
+            <div class="col-xs-12 rowcol">
+                <div class="front-welcome-logo-container">
+                    <img class="front-welcome-logo img-responsive center-block" src="/img/drdc-logo.jpg" alt="DRDC">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="auth">
+    <div id="form-container">
     <% if (message.length > 0) { %>
 		<div class="alert alert-danger login-alert"><%= message %></div>
 	<% } %>
       <form action="/login" method="post">
-        <fieldset ng-controller="LoginFormController">       
-  		<div class="form-group">
-			<label ng-show="usernameValue != ''" id="usernameLabel" for="loginUsername" class="label-floatlabel">username</label>
-			<input ng-model="usernameValue" ng-init="usernameValue='drdc'" id="loginUsername" type="text" class="form-control" name="username" placeholder ="username">
-		</div>
+          <div class="input-container">
+			<input id="loginUsername" type="text" class="form-control" name="username" placeholder ="username"/>
+			<input id="loginPassword" type="password" class="form-control" name="password" placeholder="password"/>
 
-        <div class="form-group">
-			<label ng-show="passwordValue != ''" id="passwordLabel" for="loginPassword" class="label-floatlabel">password</label>
-			<input ng-model="passwordValue" id="loginPassword" type="password" class="form-control" name="password" placeholder="password">
-		</div>
-
-        <button type="submit" class="btn btn-default" id="login-submit">Log in</button>
-        </fieldset>
+            <button type="submit" class="btn btn-default" id="login-submit">Log in</button>
+          </div>
       </form>
     </div>
     <div class="clearfix"></div>
-  </div>
+</div>
+    </div>
+    </div>
+<footer id="footer">
+    <div class="wrapper">
 
+        <ul id="footer-nav">
+            <li><p id="copyright">© 2015 DRDC</p></li>
+            <li><a href="http://www.drdc-rddc.gc.ca/en/index.page" target="_blank" rel="nofollow">drdc-rddc.gc.ca</a></li>
+            <li><a href="/about">about</a></li>
+            <li><a href="mailto:help@domain.com">inquiries</a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
