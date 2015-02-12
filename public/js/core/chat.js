@@ -4,6 +4,7 @@ var chatColor = '#FFFFFF';
 $(document).ready(function(){
     initPingTimer();
     bindChatEvents(socket);
+    socket.emit('user connected');
 
     $("#messages").scroll(function(){
 
@@ -38,7 +39,7 @@ function bindChatEvents(socket)
     $('#message-input-form').keydown(function(evt){
 
         var msg = $('#message-input').val();
-        var color = "green";
+        var color = "black";
         msgOb = {
             msg: msg,
             color: color
@@ -55,6 +56,10 @@ function bindChatEvents(socket)
     socket.on('chat message', function(msgOb){
         appendMessage(msgOb);
     });
+
+    socket.on('user connected', function(msgOb){
+        appendMessage(msgOb);
+    });
 }
 
 function appendMessage(msgOb) {
@@ -66,7 +71,7 @@ function appendMessage(msgOb) {
     }
     $('#messages')
         .append($('<li style=\"color:'+ msgOb.color  + '\">')
-        .text(msgOb.user + ": " + msgOb.msg));
+        .text(msgOb.msg));
     if(scrolling == 0)
     {
         $("#messages").scrollTop($('#messages')[0].scrollHeight);

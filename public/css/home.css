@@ -1,8 +1,16 @@
 @media only screen
 and (min-width : 768px) {
     /* full size */
-    #li-user {
+    #li-user, #sidebar-container {
         display: block !important;
+    }
+}
+
+@media only screen
+and (max-width : 767px) {
+    /* full size */
+    #main-content-container {
+        width:100% !important;
     }
 }
 
@@ -44,6 +52,7 @@ header, .navbar-brand {
     background: rgba(48, 72, 72,0.50);
     border: none;
     border-radius: 0px;
+    font-size: 10px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -88,6 +97,7 @@ header, .navbar-brand {
      color: white;*/
     position: fixed;
     z-index: -1;
+    display: none;
 }
 
 #main-content-container {
