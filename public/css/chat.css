@@ -9,6 +9,7 @@ body { font: 13px Helvetica, Arial; }
     bottom: 0;
     left: 0;
     right: 0;
+    background: #FAFAFA;
     border-top: 1px solid rgba(48,72,72,0.30);
 }
 #message-input {
@@ -20,22 +21,11 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
     position: absolute;
     width: 100%;
     overflow-y: auto;
-    bottom: 70px;
+    bottom: 50px;
     top: 0px;}
-#messages li { padding: 5px 10px; }
+#messages li { padding: 5px 10px; white-space: pre-wrap; }
 #messages li:nth-child(odd) { background: #eee; }
 #chat-color {margin-left: 5px; margin-right: 10px; top: 3px; position: relative;}
-
-#sidebar-container {
-    width: 350px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    /* display: none;
-     color: white;*/
-    position: fixed;
-    z-index: -1;
-}
 
 #chat-container {
     top: 42px;
@@ -45,3 +35,17 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
     background: #FAFAFA;
     border-left: 1px solid rgba(48,72,72,0.30);
 }
+
+#new-messages-notification {
+    display: none;
+}
+    #new-messages-notification span {
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        z-index: 1001;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(48,72,72,0.30);
+    }

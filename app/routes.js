@@ -21,11 +21,11 @@ module.exports = function(app, passport) {
     // UI Views ==========================
     // ===================================
 
-    app.get('/ui/:view', isLoggedIn, function(req, res) {
+    app.get('/module/:module', isLoggedIn, function(req, res) {
 
-        var viewString = 'uis/' + req.param('view') + '.ejs';
+        var moduleString = 'modules/' + req.param('module') + '.ejs';
 
-        res.render(viewString, {
+        res.render(moduleString, {
             user : req.user // get the user out of session and pass to template
         });
     });

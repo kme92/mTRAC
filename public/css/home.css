@@ -9,7 +9,7 @@ and (min-width : 768px) {
 header {
     background-color: #304848;
     top: 0px;
-    position: relative;
+    position: fixed;
     width: 100%;
 }
 
@@ -39,6 +39,17 @@ header, .navbar-brand {
     display: none;
 }
 
+.dropdown-menu {
+    display: none;
+    background: rgba(48, 72, 72,0.50);
+    border: none;
+    border-radius: 0px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .brand {
     padding-right: 30px;
     font-family: AvenirNext-DemiBold;
@@ -60,10 +71,34 @@ header, .navbar-brand {
     color: rgba(255,255,255,0.80);
     padding-bottom: 11px;
     padding-top: 11px;
-    font-family: AvenirNext-Medium;
+    font-family: AvenirNext-Regular;
 }
 
-    #navbar-main a:hover {
-        background: rgba(216,216,216,0.20);
-        color: white;
+    #navbar-main a:hover, .active-module {
+        background: rgba(216,216,216,0.20) !important;
+        color: white !important;
     }
+
+#sidebar-container {
+    width: 350px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* display: none;
+     color: white;*/
+    position: fixed;
+    z-index: -1;
+}
+
+#main-content-container {
+    width: calc(100% - 350px);
+    z-index: -1;
+    top: 42px;
+    height: calc(100% - 42px);
+    position: absolute;
+}
+
+#map-canvas {
+    width:100%;
+    height:100%;
+}

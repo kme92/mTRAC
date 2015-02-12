@@ -4,6 +4,16 @@ var chatColor = '#FFFFFF';
 $(document).ready(function(){
     initPingTimer();
     bindChatEvents(socket);
+
+    $("#messages").scroll(function(){
+
+        var scrollPosition = $("#messages").scrollTop() + $("#messages").height();
+        console.log(scrollPosition + "x" + $('#messages')[0].scrollHeight);
+        if(scrollPosition == $('#messages')[0].scrollHeight)
+        {
+        $('#new-messages-notification').hide();
+        }
+    });
 });
 
 function pingServer(socket)
@@ -43,13 +53,28 @@ function bindChatEvents(socket)
 
     //listen for events
     socket.on('chat message', function(msgOb){
-        console.log(msgOb);
         appendMessage(msgOb);
     });
 }
 
 function appendMessage(msgOb) {
+    var scrolling = 0;
+    var scrollPosition = $("#messages").scrollTop() + $("#messages").height();
+    if(scrollPosition != $('#messages')[0].scrollHeight)
+    {
+        scrolling = 1;
+    }
     $('#messages')
         .append($('<li style=\"color:'+ msgOb.color  + '\">')
         .text(msgOb.user + ": " + msgOb.msg));
+    if(scrolling == 0)
+    {
+        $("#messages").scrollTop($('#messages')[0].scrollHeight);
+    }
+    else
+    {
+        $("#new-messages-notification").show();
+    }
+
+
 }

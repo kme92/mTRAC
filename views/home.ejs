@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/chat.css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJS4LkscLJfGlq99GO16TgzCvYUXsAHkw"></script>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/socket.io.js"></script>
+    <script type="text/javascript" src="/js/core/core.js"></script>
     <script type="text/javascript" src="/js/core/chat.js"></script>
 </head>
 <body>
@@ -23,24 +25,32 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" id="navbar-main">
         <ul class="nav navbar-nav">
             <li>
-                <a href="./remote">Remote Communication</a>
+                <a href="#remote" onclick="loadModule(this, 'remote');">Remote Communication</a>
             </li>
             <li>
-                <a href="./mapping">Mapping</a>
+                <a href="#mapping" onclick="loadModule(this, 'mapping');">Mapping</a>
             </li>
             <li>
-                <a href="./documents">Document Sharing</a>
+                <a href="#documents" onclick="loadModule(this, 'documents');">Document Sharing</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li id="li-user"><a href="./settings"><%= user.local.name %></a></li>
+            <li class="dropdown" id="li-user">
+                <ul class="dropdown-menu">
+                    <li><a href="./settings">Settings</a></li>
+                    <li><a href="./logout">Log Out</a></li>
+                </ul>
+                <a href="./settings"><%= user.local.name %></a></li>
         </ul>
             </nav>
     </div>
 </header>
 <div id="app-container">
+    <div id="main-content-container">
+    </div>
     <div id="sidebar-container">
         <div id="chat-container">
+            <div id="new-messages-notification"><span>Scroll down to see new messages.</span></div>
         <ul id="messages"></ul>
         <form id="message-input-form" action="">
             <textarea id="message-input" placeholder="Enter a message.." autocomplete="off"></textarea>
