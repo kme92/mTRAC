@@ -153,26 +153,6 @@ header, .navbar-brand {
     height: 42px;
 }
 
-#logout {
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-}
-
-#li-logout a:hover span{
-    color: #428bca;
-}
-
-#logout .glyphicon-log-out {
-    color: white;
-}
-
-#li-user {
-    display: none;
-    right: 30px;
-    position: absolute;
-    top: 0px;
-}
-
 .brand {
     padding-right: 30px;
     font-family: AvenirNext-DemiBold;

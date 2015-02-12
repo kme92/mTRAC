@@ -1,0 +1,69 @@
+@media only screen
+and (min-width : 768px) {
+    /* full size */
+    #li-user {
+        display: block !important;
+    }
+}
+
+header {
+    background-color: #304848;
+    top: 0px;
+    position: relative;
+    width: 100%;
+}
+
+.navbar-brand {
+    height: 42px;
+    padding: 12px 15px;
+}
+
+
+
+header, .navbar-brand {
+    height: 42px;
+}
+
+#logout {
+}
+
+#li-logout a:hover span{
+    color: #428bca;
+}
+
+#logout .glyphicon-log-out {
+    color: white;
+}
+
+#li-user {
+    display: none;
+}
+
+.brand {
+    padding-right: 30px;
+    font-family: AvenirNext-DemiBold;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    font-size: 22px;
+}
+
+.navbar-right li p {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    line-height: 20px;
+    margin: 0px;
+    color: white;
+    padding-right: 30px;
+}
+
+#navbar-main a {
+    color: rgba(255,255,255,0.80);
+    padding-bottom: 11px;
+    padding-top: 11px;
+    font-family: AvenirNext-Medium;
+}
+
+    #navbar-main a:hover {
+        background: rgba(216,216,216,0.20);
+        color: white;
+    }

@@ -6,11 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/chat.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/socket.io.js"></script>
+    <script type="text/javascript" src="/js/core/chat.js"></script>
 </head>
 <body>
-<div class="container">
-
-    <a href="./ui/chat">chat</a>
+<header class="header" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <p class="brand">mTRAC</p>
+            </a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" id="navbar-main">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="./remote">Remote Communication</a>
+            </li>
+            <li>
+                <a href="./mapping">Mapping</a>
+            </li>
+            <li>
+                <a href="./documents">Document Sharing</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="li-user"><a href="./settings"><%= user.local.name %></a></li>
+        </ul>
+            </nav>
+    </div>
+</header>
+<div id="app-container">
+    <div id="sidebar-container">
+        <div id="chat-container">
+        <ul id="messages"></ul>
+        <form id="message-input-form" action="">
+            <textarea id="message-input" placeholder="Enter a message.." autocomplete="off"></textarea>
+            <!--<input id="chat-color" type="color"/>-->
+        </form>
+            </div>
+    </div>
 
 </div>
 </body>

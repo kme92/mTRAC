@@ -25,16 +25,20 @@ function initPingTimer()
 
 function bindChatEvents(socket)
 {
-    $('form').submit(function(){
-        var msg = $('#m').val();
+    $('#message-input-form').keydown(function(evt){
+
+        var msg = $('#message-input').val();
         var color = "green";
         msgOb = {
             msg: msg,
             color: color
         };
-        socket.emit('chat message', msgOb);
-        $('#m').val('');
-        return false;
+
+        if (evt.keyCode == 13 && !evt.shiftKey) {
+            $('#message-input').val('');
+            socket.emit('chat message', msgOb);
+            return false;
+        }
     });
 
     //listen for events

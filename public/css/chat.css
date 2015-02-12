@@ -2,10 +2,46 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font: 13px Helvetica, Arial; }
-form { background: #000; padding: 3px; position: fixed; bottom: 0; left: 0; right: 0; }
-#m { border: 0; padding: 10px; width: 80%; margin-right: .5%; }
+#message-input-form {
+    padding-left: 2px;
+    padding-right: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid rgba(48,72,72,0.30);
+}
+#message-input {
+    border: 0;
+    padding: 10px;
+    width: 100%; margin-right: .5%; resize: none; }
 form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages { list-style-type: none; margin: 0; padding: 0;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    bottom: 70px;
+    top: 0px;}
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
 #chat-color {margin-left: 5px; margin-right: 10px; top: 3px; position: relative;}
+
+#sidebar-container {
+    width: 350px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* display: none;
+     color: white;*/
+    position: fixed;
+    z-index: -1;
+}
+
+#chat-container {
+    top: 42px;
+    height: calc(100% - 42px);
+    width: 100%;
+    position: relative;
+    background: #FAFAFA;
+    border-left: 1px solid rgba(48,72,72,0.30);
+}
